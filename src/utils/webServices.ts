@@ -43,4 +43,6 @@ export const WebServices = {
 
   subscriptionToggle: ({ channelId }: SubscriptionToggleApiParam) =>
     `/api/v1/subscriptions/c/${channelId}`,
+
+  getAllLikedVideo: '/api/v1/likes/videos',
 };

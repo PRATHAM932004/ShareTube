@@ -23,11 +23,6 @@ const StackNavigator = () => (
       component={Screen.PlayVideo}
       options={{ animation: 'fade' }}
     />
-    <Stack.Screen
-      name="PROFILE"
-      component={Screen.Profile}
-      options={{ animation: 'fade' }}
-    />
   </Stack.Navigator>
 );
 

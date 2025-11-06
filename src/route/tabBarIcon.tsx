@@ -10,9 +10,9 @@ interface TabBarIconType
 const TabBarIcon = ({ focused, color, size, route }: TabBarIconType) => {
   const getIcon = () => {
     switch (route.name) {
-      case 'Home':
+      case 'HOME':
         return icons.Home;
-      case 'Profile':
+      case 'PROFILE':
         return icons.Profile;
       default: {
         return icons.Home;

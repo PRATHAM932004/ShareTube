@@ -2,7 +2,7 @@ import { STIcon, STLoader } from '@components';
 import { Color } from '@theme';
 import { logout, moderateScale, numberToTime } from '@utils';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-import { RootStackParamList } from 'src/route/navTypes';
+import { RootProfileParamList, RootStackParamList } from 'src/route/navTypes';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/store';
@@ -20,6 +20,7 @@ const Profile = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const nav = useNavigation<NativeStackNavigationProp<RootProfileParamList>>();
   const { isLoading, user } = useSelector(
     (state: RootState) => state.authSlice
   );
@@ -42,6 +43,10 @@ const Profile = () => {
     if (success) {
       logout(navigation);
     }
+  };
+
+  const likedVideoAction = async () => {
+    nav.push('LIKEDVIDEO');
   };
 
   return (
@@ -182,7 +187,7 @@ const Profile = () => {
           />
         </View>
         <TouchableOpacity
-          onPress={logoutAction}
+          onPress={likedVideoAction}
           activeOpacity={0.7}
           style={{
             height: moderateScale(80),

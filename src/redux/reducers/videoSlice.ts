@@ -98,7 +98,7 @@ export const VideoSlice = createSlice({
     // View Watch History
     builder.addCase(viewWatchHistory.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.watchHistory = action.payload.data ?? [];
+      state.watchHistory = action.payload.data?.reverse() ?? [];
     });
     builder.addCase(viewWatchHistory.pending, (state, action) => {
       state.isLoading = true;

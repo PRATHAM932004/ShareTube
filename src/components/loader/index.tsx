@@ -11,7 +11,7 @@ interface props {
   size?: number | 'small' | 'large';
 }
 
-const STLoader = ({ visible, cStyle, color = 'primary', size = 48 }: props) => {
+const STLoader = ({ visible, cStyle, color = 'accent', size = 48 }: props) => {
   return visible ? (
     <TouchableOpacity activeOpacity={1} style={[styles.container, cStyle]}>
       <ActivityIndicator size={size} color={Color[color]} />

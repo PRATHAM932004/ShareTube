@@ -1,15 +1,17 @@
-import { likeToggleAction } from '@redux/action/likeAction';
+import { getAllLikedVideo, likeToggleAction } from '@redux/action/likeAction';
 import { createSlice } from '@reduxjs/toolkit';
-import { Like } from '@type/dbModelType';
+import { Like, VideoWithOwnerWithCurrentUserData } from '@type/dbModelType';
 
 type LikeSliceState = {
   isLoading: boolean;
   like: Like | undefined;
+  likedVideos: VideoWithOwnerWithCurrentUserData[];
 };
 
 const initialState: LikeSliceState = {
   isLoading: false,
   like: undefined,
+  likedVideos: [],
 };
 
 export const LikeSlice = createSlice({
@@ -26,6 +28,18 @@ export const LikeSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(likeToggleAction.rejected, (state, action) => {
+      state.isLoading = false;
+    });
+
+    // Get All Liked Video
+    builder.addCase(getAllLikedVideo.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.likedVideos = action.payload.data?.reverse() ?? [];
+    });
+    builder.addCase(getAllLikedVideo.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getAllLikedVideo.rejected, (state, action) => {
       state.isLoading = false;
     });
   },

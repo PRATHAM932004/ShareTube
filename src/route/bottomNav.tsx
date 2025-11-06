@@ -1,12 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TouchableOpacity } from 'react-native';
-import { STIcon } from '@components';
 import { Color } from '@theme';
 import Screen from '@screen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TabBarIcon from './tabBarIcon';
 import { RootBottomParamList } from './navTypes';
 import { moderateScale } from '@utils';
+import ProfileNavigator from './profileNav';
 
 const BottomTab = createBottomTabNavigator<RootBottomParamList>();
 
@@ -30,8 +29,8 @@ const BottomNavigator = () => {
           ),
         })}
       >
-        <BottomTab.Screen name="Home" component={Screen.Home} />
-        <BottomTab.Screen name="Profile" component={Screen.Profile} />
+        <BottomTab.Screen name="HOME" component={Screen.Home} />
+        <BottomTab.Screen name="PROFILE" component={ProfileNavigator} />
       </BottomTab.Navigator>
     </>
   );
