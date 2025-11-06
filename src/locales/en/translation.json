@@ -1,0 +1,17 @@
+{
+  "launch": "Launch",
+  "logout": "Logout",
+  "logoutMessage": "Are you sure you want to logout?",
+  "hours": "Hours",
+  "minutes": "Minutes",
+  "seconds": "Seconds",
+  "yes": "YES",
+  "no": "NO",
+  "searchOperator": "Search Operator",
+  "selectOperator": "Select Operator",
+  "noOperatorFound": "No Operator Found",
+  "noMCardFound": "No M-Card found in current shift",
+  "mCardStartMessage": "Are you sure you want to start {{type}}: {{cardNo}}?",
+  "operationStartMessage": "Are you sure you want to start {{title}} operation?",
+  "shiftConfirmMessage":"Are you sure you want to select {{shiftTitle}} - ({{shiftTime}})?"
+}

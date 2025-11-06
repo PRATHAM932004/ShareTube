@@ -1,0 +1,16 @@
+{
+  "launch": "प्रारंभ करें",
+  "logout": "लॉगआउट",
+  "logoutMessage": "क्या आप वाकई लॉगआउट करना चाहते हैं?",
+  "hours": "घंटे",
+  "minutes": "मिनट",
+  "seconds": "सेकंड",
+  "yes": "हाँ",
+  "no": "नहीं",
+  "searchOperator": "खोज ऑपरेटर",
+  "selectOperator": "ऑपरेटर चुनें",
+  "noOperatorFound": "कोई ऑपरेटर नहीं मिला",
+  "noMCardFound": "वर्तमान शिफ्ट में कोई एम-कार्ड नहीं मिला",
+  "mCardStartMessage": "क्या आप वाकई {{type}}: {{cardNo}} शुरू करना चाहते हैं?",
+  "operationStartMessage": "क्या आप वाकई {{title}} ऑपरेशन शुरू करना चाहते हैं?"
+}
