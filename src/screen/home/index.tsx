@@ -1,8 +1,5 @@
 import { RenderVideos, STLoader } from '@components';
-import {
-  addToWatchHistory,
-  getAllVideosAction,
-} from '@redux/action/videoAction';
+import { getAllVideosAction } from '@redux/action/videoAction';
 import { AppDispatch, RootState } from '@redux/store';
 import { Color } from '@theme';
 import { VideoWithOwner } from '@type/dbModelType';
@@ -10,14 +7,15 @@ import { useEffect, useState } from 'react';
 import { FlatList, RefreshControl, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import { moderateScale } from '@utils';
+import { BottomMainProps, RootStackParamList } from 'src/route/navTypes';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const Home = () => {
+const Home = ({ navigation }: BottomMainProps<'HOME'>) => {
   const { isLoading, allVideos, totalRecord, totalPages } = useSelector(
     (state: RootState) => state.videoSlice
   );
   const dispatch = useDispatch<AppDispatch>();
-  const navigation = useNavigation<any>();
+  const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [isRefresh, setRefresh] = useState(false);
 
   useEffect(() => {
@@ -29,7 +27,7 @@ const Home = () => {
   };
 
   const openSelectedVideo = (item: VideoWithOwner) => {
-    navigation.push('PLAYVIDEO', { _id: item._id });
+    nav.push('PLAYVIDEO', { _id: item._id });
   };
 
   const onRefresh = () => {

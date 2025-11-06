@@ -2,7 +2,12 @@ import { STIcon, STLoader } from '@components';
 import { Color } from '@theme';
 import { logout, moderateScale, numberToTime } from '@utils';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-import { RootProfileParamList, RootStackParamList } from 'src/route/navTypes';
+import {
+  BottomMainProps,
+  ProfileStackProps,
+  RootProfileParamList,
+  RootStackParamList,
+} from 'src/route/navTypes';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/store';
@@ -16,11 +21,10 @@ import { useEffect } from 'react';
 import { viewWatchHistory } from '@redux/action/videoAction';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const Profile = () => {
+const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const nav = useNavigation<NativeStackNavigationProp<RootProfileParamList>>();
+  const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const nav1 = useNavigation<NativeStackNavigationProp<RootProfileParamList>>();
   const { isLoading, user } = useSelector(
     (state: RootState) => state.authSlice
   );
@@ -34,7 +38,7 @@ const Profile = () => {
   }, []);
 
   const openSelectedVideo = (item: GetViewWatchHistoryApiResponse) => {
-    navigation.push('PLAYVIDEO', { _id: item._id });
+    nav.push('PLAYVIDEO', { _id: item._id });
   };
 
   const logoutAction = async () => {
@@ -46,7 +50,7 @@ const Profile = () => {
   };
 
   const likedVideoAction = async () => {
-    nav.push('LIKEDVIDEO');
+    nav1.push('LIKEDVIDEO');
   };
 
   return (

@@ -153,24 +153,9 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
   };
 
   const shareBtnPress = async () => {
-    try {
-      const result = await Share.share({
-        // url: `https://sharetube-063s.onrender.com/api/v1/video/${selectedVideo?._id}`,
-        // title: 'ShareTube Video',
-        message: `Check this out: https://sharetube-063s.onrender.com/video/${selectedVideo?._id}`,
-      });
-
-      if (result.action === Share.sharedAction) {
-        // ✅ The user actually shared it
-        console.log('Shared successfully!');
-        // You can close a modal, reset state, or navigate back here
-      } else if (result.action === Share.dismissedAction) {
-        // ❌ The user dismissed the share sheet
-        console.log('Share cancelled.');
-      }
-    } catch (error) {
-      console.error('Error while sharing:', error);
-    }
+    await Share.share({
+      message: `Check this out: https://sharetube-063s.onrender.com/video/${selectedVideo?._id}`,
+    });
   };
 
   const handleBottomShitClose = () => {
