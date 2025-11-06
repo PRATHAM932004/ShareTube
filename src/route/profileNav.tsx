@@ -19,6 +19,16 @@ const ProfileNavigator = () => {
           headerTintColor: Color.textPrimary,
         }}
       />
+      <ProfileStack.Screen
+        name="VIEWHISTORY"
+        component={Screen.ViewHistory}
+        options={{
+          headerShown: true,
+          title: 'History',
+          headerStyle: { backgroundColor: Color.backgroundPrimary },
+          headerTintColor: Color.textPrimary,
+        }}
+      />
     </ProfileStack.Navigator>
   );
 };

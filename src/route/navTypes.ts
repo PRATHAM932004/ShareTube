@@ -21,6 +21,7 @@ export type RootBottomParamList = {
 export type RootProfileParamList = {
   PROFILEMAIN: undefined;
   LIKEDVIDEO: undefined;
+  VIEWHISTORY: undefined;
 };
 
 export type StackProps<T extends keyof RootStackParamList> =

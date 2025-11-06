@@ -53,6 +53,10 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
     nav1.push('LIKEDVIDEO');
   };
 
+  const viewHistoryAction = async () => {
+    nav1.push('VIEWHISTORY');
+  };
+
   return (
     <>
       <View
@@ -112,7 +116,7 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
             >
               History
             </Text>
-            <TouchableOpacity onPress={undefined} activeOpacity={0.7}>
+            <TouchableOpacity onPress={viewHistoryAction} activeOpacity={0.7}>
               <Text
                 style={{
                   fontSize: moderateScale(16),

@@ -4,6 +4,7 @@ import PlayVideo from './playVideo';
 import Home from './home';
 import Profile from './profile';
 import LikedVideo from './likeVideos';
+import ViewHistory from './viewHistory';
 
 export default {
   Splash,
@@ -12,4 +13,5 @@ export default {
   Home,
   Profile,
   LikedVideo,
+  ViewHistory,
 };
