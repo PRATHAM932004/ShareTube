@@ -15,6 +15,7 @@ import ActionMenuView from './ActionMenuView';
 import { ActionMenu } from '@type/common';
 import { useNavigation } from '@react-navigation/native';
 import { STIcon } from '@components';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface HeaderProps {
   visible?: boolean;
@@ -24,7 +25,6 @@ interface HeaderProps {
   txtTitle?: StyleProp<TextStyle>;
   subTitle?: string;
   isBack?: boolean;
-  isLogo?: boolean;
   onBack?: () => void;
   actuionMenus?: ActionMenu[];
   onMenuPress?: (item: ActionMenu) => void;
@@ -34,13 +34,13 @@ const Header = ({
   visible = true,
   cStyle,
   isBack = false,
-  isLogo = true,
   title,
   subTitle,
   actuionMenus,
   ...rest
 }: HeaderProps) => {
   const navigate = useNavigation();
+  const insets = useSafeAreaInsets();
 
   const onBack = () => {
     if (rest.onBack) {
@@ -52,8 +52,12 @@ const Header = ({
 
   const backView = () => {
     return isBack ? (
-      <TouchableOpacity onPress={onBack} style={styles.backView}>
-        <STIcon {...icons.back} color={Color.white} />
+      <TouchableOpacity
+        onPress={onBack}
+        style={styles.backView}
+        activeOpacity={0.7}
+      >
+        <STIcon {...icons.back} color={Color.white} size={moderateScale(40)} />
       </TouchableOpacity>
     ) : null;
   };
@@ -64,7 +68,7 @@ const Header = ({
 
   return visible ? (
     <View style={styles.container}>
-      <View style={[styles.subContainer]}>
+      <View style={[styles.subContainer, { paddingTop: insets.top }]}>
         <View
           style={[
             styles.headerContainer,
@@ -84,19 +88,6 @@ const Header = ({
           />
         )}
       </View>
-      {isLogo && (
-        <View style={styles.logoContainer}>
-          <Image
-            style={{
-              right: moderateScale(16),
-              width: moderateScale(100),
-              height: moderateScale(24),
-            }}
-            resizeMode="contain"
-            source={Images.igniteLogo}
-          />
-        </View>
-      )}
     </View>
   ) : null;
 };

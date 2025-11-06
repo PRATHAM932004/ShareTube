@@ -1,4 +1,4 @@
-import { STIcon, STLoader } from '@components';
+import { Header, STIcon, STLoader } from '@components';
 import { Color } from '@theme';
 import { logout, moderateScale, numberToTime } from '@utils';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
@@ -8,7 +8,7 @@ import {
   RootProfileParamList,
   RootStackParamList,
 } from 'src/route/navTypes';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/store';
 import { logoutRequest } from '@redux/action/authAction';
@@ -17,7 +17,7 @@ import {
   GetViewWatchHistoryApiResponse,
 } from '@type/apiResponseType';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useEffect } from 'react';
+import { useCallback } from 'react';
 import { viewWatchHistory } from '@redux/action/videoAction';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -33,9 +33,11 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
   );
   const insets = useSafeAreaInsets();
 
-  useEffect(() => {
-    dispatch(viewWatchHistory({ navigation }));
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(viewWatchHistory({ navigation }));
+    }, [])
+  );
 
   const openSelectedVideo = (item: GetViewWatchHistoryApiResponse) => {
     nav.push('PLAYVIDEO', { _id: item._id });
@@ -62,9 +64,8 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
       <View
         style={{
           flex: 1,
-          backgroundColor: Color.backgroundSecondary,
-          bottom: insets.bottom,
-          top: insets.top,
+          backgroundColor: Color.backgroundPrimary,
+          paddingTop: insets.top,
         }}
       >
         <View style={{ flexDirection: 'row', padding: moderateScale(16) }}>
@@ -137,7 +138,7 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
               <TouchableOpacity
                 onPress={() => openSelectedVideo(item)}
                 activeOpacity={0.7}
-                style={{ backgroundColor: Color.backgroundSecondary }}
+                style={{ backgroundColor: Color.backgroundPrimary }}
               >
                 <View>
                   <Image
@@ -191,7 +192,7 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
             horizontal
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item._id}
-            style={{ backgroundColor: Color.backgroundSecondary }}
+            style={{ backgroundColor: Color.backgroundPrimary }}
           />
         </View>
         <TouchableOpacity
@@ -199,7 +200,7 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
           activeOpacity={0.7}
           style={{
             height: moderateScale(80),
-            backgroundColor: Color.backgroundTertiary,
+            backgroundColor: Color.backgroundSecondary,
             alignItems: 'center',
             padding: moderateScale(20),
             marginVertical: moderateScale(16),
@@ -225,7 +226,7 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
           activeOpacity={0.7}
           style={{
             height: moderateScale(80),
-            backgroundColor: Color.backgroundTertiary,
+            backgroundColor: Color.backgroundSecondary,
             alignItems: 'center',
             padding: moderateScale(20),
             marginHorizontal: moderateScale(16),

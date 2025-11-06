@@ -1,4 +1,4 @@
-import { STLoader } from '@components';
+import { Header, STLoader } from '@components';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { getAllLikedVideo } from '@redux/action/likeAction';
@@ -28,6 +28,7 @@ const LikedVideo = ({ navigation }: MoreProps<'LIKEDVIDEO'>) => {
 
   return (
     <>
+      <Header isBack title="Liked Videos" />
       <View
         style={{
           padding: moderateScale(16),
@@ -65,9 +66,31 @@ const LikedVideo = ({ navigation }: MoreProps<'LIKEDVIDEO'>) => {
                     width: width * 0.55 - moderateScale(16),
                   }}
                 >
-                  <Text style={{ color: Color.textPrimary }}>{title}</Text>
-                  <Text style={{ color: Color.textPrimary }}>{fullName}</Text>
-                  <Text style={{ color: Color.textSecondary }}>
+                  <Text
+                    style={{
+                      color: Color.textPrimary,
+                      fontSize: moderateScale(20),
+                      marginBottom: moderateScale(4),
+                    }}
+                    numberOfLines={2}
+                  >
+                    {title}
+                  </Text>
+                  <Text
+                    style={{
+                      color: Color.textPrimary,
+                      fontSize: moderateScale(20),
+                      marginBottom: moderateScale(4),
+                    }}
+                  >
+                    {fullName}
+                  </Text>
+                  <Text
+                    style={{
+                      color: Color.textSecondary,
+                      fontSize: moderateScale(16),
+                    }}
+                  >
                     {views} Views
                   </Text>
                 </View>

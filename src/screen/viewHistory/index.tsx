@@ -1,11 +1,12 @@
-import { STLoader } from '@components';
+import { Header, STLoader } from '@components';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { viewWatchHistory } from '@redux/action/videoAction';
 import { AppDispatch, RootState } from '@redux/store';
 import { Color } from '@theme';
 import { GetViewWatchHistoryApiResponse } from '@type/apiResponseType';
 import { moderateScale, width } from '@utils';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { MoreProps, RootStackParamList } from 'src/route/navTypes';
@@ -17,12 +18,21 @@ const ViewHistory = ({ navigation }: MoreProps<'VIEWHISTORY'>) => {
     (state: RootState) => state.videoSlice
   );
 
+  useEffect(() => {
+    getWatchHistory();
+  }, []);
+
+  const getWatchHistory = async () => {
+    await dispatch(viewWatchHistory({ navigation }));
+  };
+
   const openSelectedVideo = (item: GetViewWatchHistoryApiResponse) => {
     nav.push('PLAYVIDEO', { _id: item._id });
   };
 
   return (
     <>
+      <Header isBack title="History" />
       <View
         style={{
           padding: moderateScale(16),
@@ -60,9 +70,31 @@ const ViewHistory = ({ navigation }: MoreProps<'VIEWHISTORY'>) => {
                     width: width * 0.55 - moderateScale(16),
                   }}
                 >
-                  <Text style={{ color: Color.textPrimary }}>{title}</Text>
-                  <Text style={{ color: Color.textPrimary }}>{fullName}</Text>
-                  <Text style={{ color: Color.textSecondary }}>
+                  <Text
+                    style={{
+                      color: Color.textPrimary,
+                      fontSize: moderateScale(20),
+                      marginBottom: moderateScale(4),
+                    }}
+                    numberOfLines={2}
+                  >
+                    {title}
+                  </Text>
+                  <Text
+                    style={{
+                      color: Color.textPrimary,
+                      fontSize: moderateScale(20),
+                      marginBottom: moderateScale(4),
+                    }}
+                  >
+                    {fullName}
+                  </Text>
+                  <Text
+                    style={{
+                      color: Color.textSecondary,
+                      fontSize: moderateScale(16),
+                    }}
+                  >
                     {views} Views
                   </Text>
                 </View>

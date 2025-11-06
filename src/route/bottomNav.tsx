@@ -20,7 +20,7 @@ const BottomNavigator = () => {
           headerShown: false,
           tabBarActiveTintColor: Color.accent,
           tabBarStyle: {
-            backgroundColor: Color.backgroundSecondary,
+            backgroundColor: Color.backgroundPrimary,
             height: moderateScale(60) + insets.bottom,
             display: 'flex',
           },

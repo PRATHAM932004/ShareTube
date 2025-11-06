@@ -50,7 +50,7 @@ const Home = ({ navigation }: BottomMainProps<'HOME'>) => {
         keyExtractor={(item) => item._id}
         showsVerticalScrollIndicator={false}
         ListFooterComponent={<View style={{ height: 100 }} />}
-        style={{ backgroundColor: Color.backgroundSecondary }}
+        style={{ backgroundColor: Color.backgroundPrimary }}
         refreshControl={
           <RefreshControl
             refreshing={isRefresh}

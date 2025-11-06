@@ -9,26 +9,8 @@ const ProfileNavigator = () => {
   return (
     <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
       <ProfileStack.Screen name="PROFILEMAIN" component={Screen.Profile} />
-      <ProfileStack.Screen
-        name="LIKEDVIDEO"
-        component={Screen.LikedVideo}
-        options={{
-          headerShown: true,
-          title: 'Liked Videos',
-          headerStyle: { backgroundColor: Color.backgroundPrimary },
-          headerTintColor: Color.textPrimary,
-        }}
-      />
-      <ProfileStack.Screen
-        name="VIEWHISTORY"
-        component={Screen.ViewHistory}
-        options={{
-          headerShown: true,
-          title: 'History',
-          headerStyle: { backgroundColor: Color.backgroundPrimary },
-          headerTintColor: Color.textPrimary,
-        }}
-      />
+      <ProfileStack.Screen name="LIKEDVIDEO" component={Screen.LikedVideo} />
+      <ProfileStack.Screen name="VIEWHISTORY" component={Screen.ViewHistory} />
     </ProfileStack.Navigator>
   );
 };

@@ -196,7 +196,7 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
           <View>
             <Text
               style={{
-                fontSize: moderateScale(24),
+                fontSize: moderateScale(20),
                 color: Color.textPrimary,
                 marginBottom: moderateScale(8),
               }}
@@ -207,14 +207,14 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
           <View style={{ flexDirection: 'row' }}>
             <Text
               style={{
-                fontSize: moderateScale(20),
+                fontSize: moderateScale(16),
                 color: Color.textSecondary,
               }}
             >
               {`${views} views   ${customTimeAgo(createdAt)} `}
             </Text>
             <Text
-              style={{ fontSize: moderateScale(20), color: Color.textPrimary }}
+              style={{ fontSize: moderateScale(16), color: Color.textPrimary }}
             >
               {`  ...more`}
             </Text>
@@ -230,9 +230,12 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
         >
           <Image
             source={{ uri: avatar }}
-            height={50}
-            width={50}
-            style={{ borderRadius: 25, marginRight: moderateScale(16) }}
+            height={moderateScale(50)}
+            width={moderateScale(50)}
+            style={{
+              borderRadius: moderateScale(25),
+              marginRight: moderateScale(16),
+            }}
           />
           <View style={{ flex: 1, justifyContent: 'center', height: 50 }}>
             <View>
@@ -297,9 +300,14 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
               name={liked ? 'heart' : 'heart-outlined'}
               type="Entypo"
               color={Color.textPrimary}
+              size={moderateScale(32)}
             />
             <Text
-              style={{ color: Color.textPrimary, marginLeft: moderateScale(8) }}
+              style={{
+                color: Color.textPrimary,
+                marginLeft: moderateScale(8),
+                fontSize: moderateScale(20),
+              }}
             >
               {likesCounts} Likes
             </Text>
@@ -322,9 +330,14 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
               name="comment"
               type="FontAwesome"
               color={Color.textPrimary}
+              size={moderateScale(32)}
             />
             <Text
-              style={{ color: Color.textPrimary, marginLeft: moderateScale(8) }}
+              style={{
+                color: Color.textPrimary,
+                marginLeft: moderateScale(8),
+                fontSize: moderateScale(20),
+              }}
             >
               Comment
             </Text>
@@ -344,9 +357,18 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
               justifyContent: 'center',
             }}
           >
-            <STIcon name="share" type="FontAwesome" color={Color.textPrimary} />
+            <STIcon
+              name="share"
+              type="FontAwesome"
+              color={Color.textPrimary}
+              size={moderateScale(32)}
+            />
             <Text
-              style={{ color: Color.textPrimary, marginLeft: moderateScale(8) }}
+              style={{
+                color: Color.textPrimary,
+                marginLeft: moderateScale(8),
+                fontSize: moderateScale(20),
+              }}
             >
               Share
             </Text>
@@ -366,9 +388,6 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
           showsVerticalScrollIndicator={false}
           numColumns={1}
           keyExtractor={(item) => item._id}
-          style={{
-            backgroundColor: Color.backgroundSecondary,
-          }}
           ListFooterComponent={<View style={{ height: 100 }} />}
         />
       </View>
@@ -386,7 +405,7 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
           >
             <Text
               style={{
-                fontSize: moderateScale(24),
+                fontSize: moderateScale(20),
                 color: Color.textPrimary,
               }}
             >
@@ -408,8 +427,22 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
                 borderRadius: moderateScale(12),
               }}
             >
-              <Text style={{ color: Color.textPrimary }}>{likesCount}</Text>
-              <Text style={{ color: Color.textPrimary }}>Likes</Text>
+              <Text
+                style={{
+                  color: Color.textPrimary,
+                  fontSize: moderateScale(20),
+                }}
+              >
+                {likesCount}
+              </Text>
+              <Text
+                style={{
+                  color: Color.textPrimary,
+                  fontSize: moderateScale(20),
+                }}
+              >
+                Likes
+              </Text>
             </View>
             <View
               style={{
@@ -423,8 +456,22 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
                 borderRadius: moderateScale(12),
               }}
             >
-              <Text style={{ color: Color.textPrimary }}>{views}</Text>
-              <Text style={{ color: Color.textPrimary }}>Views</Text>
+              <Text
+                style={{
+                  color: Color.textPrimary,
+                  fontSize: moderateScale(20),
+                }}
+              >
+                {views}
+              </Text>
+              <Text
+                style={{
+                  color: Color.textPrimary,
+                  fontSize: moderateScale(20),
+                }}
+              >
+                Views
+              </Text>
             </View>
             <View
               style={{
@@ -438,10 +485,20 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
                 borderRadius: moderateScale(12),
               }}
             >
-              <Text style={{ color: Color.textPrimary }}>
+              <Text
+                style={{
+                  color: Color.textPrimary,
+                  fontSize: moderateScale(20),
+                }}
+              >
                 {moment(createdAt).format('D MMM')}
               </Text>
-              <Text style={{ color: Color.textPrimary }}>
+              <Text
+                style={{
+                  color: Color.textPrimary,
+                  fontSize: moderateScale(20),
+                }}
+              >
                 {moment(createdAt).format('YYYY')}
               </Text>
             </View>
@@ -458,7 +515,11 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
               marginBottom: moderateScale(16),
             }}
           >
-            <Text style={{ color: Color.textPrimary }}>{description}</Text>
+            <Text
+              style={{ color: Color.textPrimary, fontSize: moderateScale(20) }}
+            >
+              {description}
+            </Text>
           </View>
           <View
             style={{
@@ -470,9 +531,12 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
           >
             <Image
               source={{ uri: avatar }}
-              height={50}
-              width={50}
-              style={{ borderRadius: 25, marginRight: moderateScale(16) }}
+              height={moderateScale(50)}
+              width={moderateScale(50)}
+              style={{
+                borderRadius: moderateScale(25),
+                marginRight: moderateScale(16),
+              }}
             />
             <View style={{ flex: 1, justifyContent: 'center', height: 50 }}>
               <View>
@@ -486,7 +550,7 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
                 </Text>
                 <Text
                   style={{
-                    fontSize: moderateScale(20),
+                    fontSize: moderateScale(16),
                     color: Color.textPrimary,
                   }}
                 >
@@ -502,9 +566,10 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
             >
               <Text
                 style={{
-                  lineHeight: moderateScale(20),
+                  lineHeight: moderateScale(24),
                   color: !subscribe ? Color.textPrimary : Color.black,
                   fontWeight: 'bold',
+                  fontSize: moderateScale(20),
                 }}
               >
                 {subscribe ? 'Unsubscribe' : 'Subscribe'}

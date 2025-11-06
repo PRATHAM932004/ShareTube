@@ -68,18 +68,21 @@ const RenderVideos = ({
         >
           <Image
             source={{ uri: avatar }}
-            height={50}
-            width={50}
+            height={moderateScale(50)}
+            width={moderateScale(50)}
             style={{ borderRadius: 25, marginRight: moderateScale(16) }}
           />
           <View>
             <View>
-              <Text style={{ fontSize: moderateScale(24), color: Color.white }}>
+              <Text
+                style={{ fontSize: moderateScale(20), color: Color.white }}
+                numberOfLines={2}
+              >
                 {title}
               </Text>
             </View>
             <View>
-              <Text style={{ fontSize: moderateScale(20), color: Color.white }}>
+              <Text style={{ fontSize: moderateScale(16), color: Color.white }}>
                 {fullName} • {views} views
               </Text>
             </View>

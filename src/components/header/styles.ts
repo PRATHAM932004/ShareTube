@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: moderateScale(60),
+    height: moderateScale(100),
   },
   headerContainer: {
     flexDirection: 'row',
@@ -23,23 +23,12 @@ export const styles = StyleSheet.create({
   },
   txtTitle: {
     color: Color.white,
-    fontSize: moderateScale(20),
+    fontSize: moderateScale(24),
     fontWeight: 'bold',
   },
   txtSubTitle: {
     color: Color.white,
-    fontSize: moderateScale(14),
-  },
-  logoContainer: {
-    position: 'absolute',
-    height: '100%',
-    justifyContent: 'center',
-  },
-  logoText: {
-    color: Color.white,
-    fontSize: moderateScale(22),
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
+    fontSize: moderateScale(16),
   },
   menuItem: {
     flexDirection: 'row',
@@ -65,7 +54,7 @@ export const styles = StyleSheet.create({
   },
   headerText: {
     color: Color.white,
-    fontSize: moderateScale(14),
+    fontSize: moderateScale(20),
     fontWeight: '600',
     marginLeft: moderateScale(6),
   },
