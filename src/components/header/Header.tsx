@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { styles } from './styles';
 import { icons, moderateScale } from '@utils';
-import { Color, Images, Strings } from '@theme';
+import { Color, Images } from '@theme';
 import ActionMenuView from './ActionMenuView';
 import { ActionMenu } from '@type/common';
 import { useNavigation } from '@react-navigation/native';
@@ -27,6 +27,7 @@ interface HeaderProps {
   isBack?: boolean;
   onBack?: () => void;
   actuionMenus?: ActionMenu[];
+  isLogo?: boolean;
   onMenuPress?: (item: ActionMenu) => void;
 }
 
@@ -35,6 +36,7 @@ const Header = ({
   cStyle,
   isBack = false,
   title,
+  isLogo = false,
   subTitle,
   actuionMenus,
   ...rest
@@ -76,6 +78,27 @@ const Header = ({
           ]}
         >
           {backView()}
+          {isLogo && (
+            <View style={styles.logoContainer}>
+              <Image
+                style={{
+                  width: moderateScale(48),
+                  height: moderateScale(48),
+                  borderRadius: moderateScale(24),
+                }}
+                resizeMode="contain"
+                source={Images.igniteLogo}
+              />
+              <Text
+                style={{
+                  color: Color.textPrimary,
+                  fontSize: moderateScale(28),
+                }}
+              >
+                ShareTube
+              </Text>
+            </View>
+          )}
           <View style={[styles.titleViewStyle, rest.titleViewStyle]}>
             <Text style={[styles.txtTitle, rest.txtTitle]}>{title}</Text>
             {subTitle && <Text style={styles.txtSubTitle}>{subTitle}</Text>}

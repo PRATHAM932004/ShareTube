@@ -35,9 +35,9 @@ export const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: moderateScale(10),
+    paddingHorizontal: moderateScale(16),
   },
-  grid: { paddingHorizontal: moderateScale(10) },
+  grid: { paddingHorizontal: moderateScale(16) },
   iconWithTitle: {
     flexDirection: 'row',
     paddingHorizontal: moderateScale(8),
@@ -57,5 +57,17 @@ export const styles = StyleSheet.create({
     fontSize: moderateScale(20),
     fontWeight: '600',
     marginLeft: moderateScale(6),
+  },
+  logoContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: moderateScale(16),
+  },
+  logoText: {
+    color: Color.white,
+    fontSize: moderateScale(22),
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 });

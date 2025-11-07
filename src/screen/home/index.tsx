@@ -1,4 +1,4 @@
-import { RenderVideos, STLoader } from '@components';
+import { Header, RenderVideos, STLoader } from '@components';
 import { getAllVideosAction } from '@redux/action/videoAction';
 import { AppDispatch, RootState } from '@redux/store';
 import { Color } from '@theme';
@@ -37,6 +37,7 @@ const Home = ({ navigation }: BottomMainProps<'HOME'>) => {
 
   return (
     <>
+      <Header isLogo />
       <FlatList
         data={allVideos}
         renderItem={({ item, index }) => (
