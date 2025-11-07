@@ -54,3 +54,15 @@ export type FormattedTime = {
   minutes: string;
   seconds: string;
 };
+
+export type DocumentPickerResponse = {
+  name: string;
+  uri: string;
+  type: string;
+  nativeType?: string;
+  size?: number;
+  isVirtual?: boolean;
+  hasRequestedType?: boolean;
+  error?: string | null;
+  convertibleToMimeTypes?: string[] | null;
+};

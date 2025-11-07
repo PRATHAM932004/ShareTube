@@ -14,6 +14,8 @@ const TabBarIcon = ({ focused, color, size, route }: TabBarIconType) => {
         return icons.Home;
       case 'PROFILE':
         return icons.Profile;
+      case 'UPLOAD':
+        return icons.Upload;
       default: {
         return icons.Home;
       }

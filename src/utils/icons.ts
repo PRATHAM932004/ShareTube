@@ -55,6 +55,10 @@ const iconMap = {
     name: 'person',
     type: 'MaterialIcons',
   },
+  Upload: {
+    name: 'plus',
+    type: 'FontAwesome5',
+  },
 } satisfies Record<string, STIconProps>;
 
 export const icons = iconMap;

@@ -15,6 +15,7 @@ export type RootStackParamList = {
 
 export type RootBottomParamList = {
   HOME: undefined;
+  UPLOAD: undefined;
   PROFILE: undefined;
 };
 

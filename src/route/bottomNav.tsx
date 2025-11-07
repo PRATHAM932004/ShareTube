@@ -12,7 +12,6 @@ const BottomTab = createBottomTabNavigator<RootBottomParamList>();
 const BottomNavigator = () => {
   const insets = useSafeAreaInsets();
 
-  console.log(insets);
   return (
     <>
       <BottomTab.Navigator
@@ -30,6 +29,7 @@ const BottomNavigator = () => {
         })}
       >
         <BottomTab.Screen name="HOME" component={Screen.Home} />
+        <BottomTab.Screen name="UPLOAD" component={Screen.UploadVideo} />
         <BottomTab.Screen name="PROFILE" component={ProfileNavigator} />
       </BottomTab.Navigator>
     </>
