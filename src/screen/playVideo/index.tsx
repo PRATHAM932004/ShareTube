@@ -49,44 +49,16 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
     return () => {
       dispatch(clearVideoState('selectedVideo'));
     };
-  }, [route.params]);
+  }, []);
 
   const getVideo = async () => {
-    if (!allVideos) {
-      const { success } = (
-        await dispatch(
-          getAllVideosAction({ body: { limit: 10, page: 1 }, navigation })
-        )
-      ).payload as ApiResponseFront;
-      if (success) {
-        const { success: videoGet } = (
-          await dispatch(
-            getVideoByIdAction({ body: { videoId: video._id }, navigation })
-          )
-        ).payload as ApiResponseFront;
-        if (videoGet) {
-          dispatch(
-            addToWatchHistory({ body: { videoId: video._id }, navigation })
-          );
-          return true;
-        } else {
-          return false;
-        }
-      }
-    } else {
-      const { success: videoGet } = (
-        await dispatch(
-          getVideoByIdAction({ body: { videoId: video._id }, navigation })
-        )
-      ).payload as ApiResponseFront;
-      if (videoGet) {
-        dispatch(
-          addToWatchHistory({ body: { videoId: video._id }, navigation })
-        );
-        return true;
-      } else {
-        return false;
-      }
+    const { success } = (
+      await dispatch(
+        getVideoByIdAction({ body: { videoId: video._id }, navigation })
+      )
+    ).payload as ApiResponseFront;
+    if (success) {
+      dispatch(addToWatchHistory({ body: { videoId: video._id }, navigation }));
     }
   };
 
@@ -100,11 +72,7 @@ const PlayVideo = ({ navigation, route }: StackProps<'PLAYVIDEO'>) => {
   }, [selectedVideo, allVideos]);
 
   const openSelectedVideo = async (item: VideoWithOwner) => {
-    const res = await getVideo();
-    if (res == true) {
-      dispatch(addToWatchHistory({ body: { videoId: item._id }, navigation }));
-      navigation.replace('PLAYVIDEO', item);
-    }
+    navigation.replace('PLAYVIDEO', item);
   };
 
   const onMoreClick = () => {
