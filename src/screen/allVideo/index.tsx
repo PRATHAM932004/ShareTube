@@ -10,6 +10,7 @@ import { RootStackParamList, StackProps } from 'src/route/navTypes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useCallback } from 'react';
 import { clearVideoState } from '@redux/reducers/videoSlice';
+import { moderateScale } from '@utils';
 
 const AllVideo = ({ navigation }: StackProps<'ALLVIDEO'>) => {
   const {
@@ -48,7 +49,12 @@ const AllVideo = ({ navigation }: StackProps<'ALLVIDEO'>) => {
 
   return (
     <>
-      <Header isBack isSearch onSubmit={handleSubmit} />
+      <Header
+        isBack
+        isSearch
+        onSubmit={handleSubmit}
+        subContainerStyle={{ height: moderateScale(120) }}
+      />
       <FlatList
         data={allVideosFiltered}
         renderItem={({ item, index }) => (

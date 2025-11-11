@@ -32,7 +32,6 @@ const ViewChennal = ({ navigation }: ProfileStackProps<'VIEWCHENNAL'>) => {
   const { isLoading, userProfile } = useSelector(
     (state: RootState) => state.userSlice
   );
-  const insets = useSafeAreaInsets();
 
   useFocusEffect(
     useCallback(() => {
@@ -84,7 +83,6 @@ const ViewChennal = ({ navigation }: ProfileStackProps<'VIEWCHENNAL'>) => {
         style={{
           flex: 1,
           backgroundColor: Color.backgroundPrimary,
-          paddingTop: insets.top,
         }}
       >
         <View style={{ flexDirection: 'row', padding: moderateScale(16) }}>

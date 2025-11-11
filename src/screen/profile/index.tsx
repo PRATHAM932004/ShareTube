@@ -30,7 +30,6 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
   const { isLoading: watchHistoryLoading, watchHistory } = useSelector(
     (state: RootState) => state.videoSlice
   );
-  const insets = useSafeAreaInsets();
 
   useFocusEffect(
     useCallback(() => {
@@ -72,7 +71,6 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
         style={{
           flex: 1,
           backgroundColor: Color.backgroundPrimary,
-          paddingTop: insets.top,
         }}
       >
         <TouchableOpacity
