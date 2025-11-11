@@ -11,6 +11,7 @@ export interface STTextInputProps<T> extends TextInputProps {
   id: Extract<keyof T, string>;
   visible?: boolean;
   cStyle?: StyleProp<ViewStyle>;
+  inputTextStyle?: StyleProp<ViewStyle>;
   className?: string;
   leftIcon?: STIconProps;
   rightIcon?: STIconProps;
@@ -28,6 +29,7 @@ const STTextInput = <T,>({
   disabled,
   value,
   onChangeText,
+  inputTextStyle,
   onBlur,
   passRightIcon = false,
   ...rest
@@ -74,10 +76,13 @@ const STTextInput = <T,>({
     <View style={[styles.container, rest.cStyle]}>
       <TextInput
         id={id}
-        style={{
-          height: moderateScale(60),
-          backgroundColor: Color.backgroundPrimary,
-        }}
+        style={[
+          {
+            height: moderateScale(60),
+            backgroundColor: Color.backgroundPrimary,
+          },
+          inputTextStyle,
+        ]}
         mode={mode}
         value={value}
         onChangeText={onChangeText}

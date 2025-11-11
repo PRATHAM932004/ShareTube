@@ -11,6 +11,7 @@ export type RootStackParamList = {
   LOGIN: undefined;
   DASHBOARD: undefined;
   PLAYVIDEO: { _id: string };
+  ALLVIDEO: undefined;
 };
 
 export type RootBottomParamList = {

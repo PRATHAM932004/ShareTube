@@ -31,14 +31,7 @@ export type STIconProps = IconProps & {
   onPress?: () => void;
 };
 
-export type ActionMenuId =
-  | 'Logout'
-  | 'More'
-  | 'Oprator'
-  | 'Machine'
-  | 'Language'
-  | 'Handover'
-  | 'Shiftend';
+export type ActionMenuId = 'Logout' | 'Search' | 'More';
 
 export type ActionMenu = {
   id: ActionMenuId;

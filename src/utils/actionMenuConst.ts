@@ -7,26 +7,10 @@ export const logoutAction: ActionMenu = {
   icon: icons.logout,
 };
 
-export const operatorAction: ActionMenu = {
-  id: 'Oprator',
-  icon: icons.user,
-  name: 'Oprator',
-  isPrimaryWithLabel: true,
-  isNotPress: true,
-};
-
-export const machineAction: ActionMenu = {
-  id: 'Machine',
-  icon: icons.settings,
-  name: 'Machine',
-  isPrimaryWithLabel: true,
-  isNotPress: true,
-};
-
-export const languageAction: ActionMenu = {
-  id: 'Language',
-  name: 'Language',
-  icon: icons.language,
+export const searchAction: ActionMenu = {
+  id: 'Search',
+  icon: icons.search,
+  name: 'Search',
 };
 
 export const moreAction: ActionMenu = {
@@ -35,19 +19,3 @@ export const moreAction: ActionMenu = {
   icon: icons.moreAction,
   isPrimary: true,
 };
-
-export const handOverAction: ActionMenu = {
-  id: 'Handover',
-  name: 'Handover',
-  icon: icons.handOver,
-  isPrimary: false,
-};
-
-export const shiftEndAction: ActionMenu = {
-  id: 'Shiftend',
-  name: 'Shift End',
-  icon: icons.shiftEnd,
-  isPrimary: false,
-};
-
-export const homeActiopnMenu = [languageAction, logoutAction];

@@ -9,12 +9,12 @@ import {
 } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
-import { icons, moderateScale } from '@utils';
+import { icons, moderateScale, width } from '@utils';
 import { Color, Images } from '@theme';
 import ActionMenuView from './ActionMenuView';
 import { ActionMenu } from '@type/common';
 import { useNavigation } from '@react-navigation/native';
-import { STIcon } from '@components';
+import { STIcon, STTextInput } from '@components';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface HeaderProps {
@@ -25,11 +25,13 @@ interface HeaderProps {
   title?: string;
   txtTitle?: StyleProp<TextStyle>;
   subTitle?: string;
+  isSearch?: boolean;
   isBack?: boolean;
   onBack?: () => void;
   actuionMenus?: ActionMenu[];
   isLogo?: boolean;
   onMenuPress?: (item: ActionMenu) => void;
+  onSubmit?: (value: string) => void;
 }
 
 const Header = ({
@@ -38,13 +40,16 @@ const Header = ({
   isBack = false,
   title,
   isLogo = false,
+  isSearch = false,
   subTitle,
   actuionMenus,
   subContainerStyle,
+  onSubmit = () => {},
   ...rest
 }: HeaderProps) => {
   const navigate = useNavigation();
   const insets = useSafeAreaInsets();
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   const onBack = () => {
     if (rest.onBack) {
@@ -68,6 +73,10 @@ const Header = ({
 
   const onMenuPress = (item: ActionMenu) => {
     if (rest.onMenuPress) rest.onMenuPress(item);
+  };
+
+  const handleSearch = (data: string) => {
+    onSubmit(data);
   };
 
   return visible ? (
@@ -106,6 +115,19 @@ const Header = ({
                 ShareTube
               </Text>
             </View>
+          )}
+          {isSearch && (
+            <STTextInput
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+              onSubmitEditing={() => {
+                handleSearch(searchQuery);
+              }}
+              placeholder="Search"
+              returnKeyType="search"
+              id="search"
+              cStyle={{ width: width - moderateScale(80) }}
+            />
           )}
           <View style={[styles.titleViewStyle, rest.titleViewStyle]}>
             <Text style={[styles.txtTitle, rest.txtTitle]}>{title}</Text>

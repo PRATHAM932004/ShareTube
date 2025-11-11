@@ -1,5 +1,6 @@
 import {
   getAllVideosAction,
+  getAllVideosFilteredAction,
   getVideoByIdAction,
   viewWatchHistory,
 } from '@redux/action/videoAction';
@@ -19,6 +20,11 @@ type VideoSliceState = {
   totalPages: number | undefined;
   selectedVideo: VideoWithOwnerWithCurrentUserData | undefined;
   watchHistory: GetViewWatchHistoryApiResponse[];
+  allVideosFiltered: VideoWithOwner[] | undefined;
+  totalRecordFiltered: number | undefined;
+  pageFiltered: number | undefined;
+  limitFiltered: number | undefined;
+  totalPagesFiltered: number | undefined;
 };
 
 type VideoSliceStateKeys = keyof VideoSliceState | 'All';
@@ -32,6 +38,11 @@ const initialState: VideoSliceState = {
   totalPages: undefined,
   selectedVideo: undefined,
   watchHistory: [],
+  allVideosFiltered: [],
+  totalRecordFiltered: undefined,
+  pageFiltered: undefined,
+  limitFiltered: undefined,
+  totalPagesFiltered: undefined,
 };
 
 export const VideoSlice = createSlice({
@@ -54,6 +65,13 @@ export const VideoSlice = createSlice({
         case 'selectedVideo':
           state.selectedVideo = undefined;
           break;
+        case 'allVideosFiltered':
+          state.allVideosFiltered = [];
+          state.limitFiltered = undefined;
+          state.pageFiltered = undefined;
+          state.totalPagesFiltered = undefined;
+          state.totalRecordFiltered = undefined;
+          break;
         default: {
           state.isLoading = false;
           state.allVideos = [];
@@ -62,6 +80,11 @@ export const VideoSlice = createSlice({
           state.totalPages = undefined;
           state.totalRecord = undefined;
           state.selectedVideo = undefined;
+          state.allVideosFiltered = [];
+          state.limitFiltered = undefined;
+          state.pageFiltered = undefined;
+          state.totalPagesFiltered = undefined;
+          state.totalRecordFiltered = undefined;
         }
       }
     },
@@ -80,6 +103,22 @@ export const VideoSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(getAllVideosAction.rejected, (state, action) => {
+      state.isLoading = false;
+    });
+
+    // Get all video Filtered
+    builder.addCase(getAllVideosFilteredAction.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.allVideosFiltered = action.payload.data?.videos ?? [];
+      state.totalRecordFiltered = action.payload.data?.total;
+      state.pageFiltered = action.payload.data?.page;
+      state.limitFiltered = action.payload.data?.limit;
+      state.totalPagesFiltered = action.payload.data?.totalPages;
+    });
+    builder.addCase(getAllVideosFilteredAction.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getAllVideosFilteredAction.rejected, (state, action) => {
       state.isLoading = false;
     });
 

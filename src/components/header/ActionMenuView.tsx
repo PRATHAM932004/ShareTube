@@ -4,7 +4,7 @@ import { Color } from '@theme';
 import { ActionMenu } from '@type/common';
 import { styles } from './styles';
 import IgMenuOverlay from '../menuOverlay/IGMenuOverlay';
-import { moreAction } from '@utils';
+import { moderateScale, moreAction } from '@utils';
 import { STIcon } from '@components';
 
 interface ActionMenuViewProps {
@@ -47,7 +47,7 @@ const ActionMenuView = ({
         <View
           {...(item.isPrimaryWithLabel === true ? styles.iconWithTitle : {})}
         >
-          <STIcon {...item.icon} color={Color.white} size={20} />
+          <STIcon {...item.icon} color={Color.white} size={moderateScale(40)} />
           {item.isPrimaryWithLabel && (
             <Text style={styles.headerText}>{item.name}</Text>
           )}

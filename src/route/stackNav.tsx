@@ -21,7 +21,12 @@ const StackNavigator = () => (
     <Stack.Screen
       name="PLAYVIDEO"
       component={Screen.PlayVideo}
-      options={{ animation: 'fade' }}
+      options={{ animation: 'slide_from_right' }}
+    />
+    <Stack.Screen
+      name="ALLVIDEO"
+      component={Screen.AllVideo}
+      options={{ animation: 'slide_from_right' }}
     />
   </Stack.Navigator>
 );

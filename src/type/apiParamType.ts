@@ -5,7 +5,7 @@ export type InitializeAppApiParam = {
 export type GetAllVideosApiParam = {
   page: number;
   limit: number;
-  query?: number;
+  query?: string;
 };
 
 export type GetVideoByIdApiParam = {

@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { BottomMainProps, RootStackParamList } from 'src/route/navTypes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { moderateScale } from '@utils';
+import { moderateScale, searchAction } from '@utils';
 
 const Home = ({ navigation }: BottomMainProps<'HOME'>) => {
   const { isLoading, allVideos, totalRecord, totalPages } = useSelector(
@@ -38,7 +38,16 @@ const Home = ({ navigation }: BottomMainProps<'HOME'>) => {
 
   return (
     <>
-      <Header isLogo subContainerStyle={{ height: moderateScale(120) }} />
+      <Header
+        isLogo
+        subContainerStyle={{ height: moderateScale(120) }}
+        actuionMenus={[searchAction]}
+        onMenuPress={async (item) => {
+          if (item.id === 'Search') {
+            nav.navigate('ALLVIDEO');
+          }
+        }}
+      />
       <FlatList
         data={allVideos}
         renderItem={({ item, index }) => (
