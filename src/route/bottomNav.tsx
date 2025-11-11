@@ -29,7 +29,7 @@ const BottomNavigator = () => {
         })}
       >
         <BottomTab.Screen name="HOME" component={Screen.Home} />
-        <BottomTab.Screen name="UPLOAD" component={Screen.UploadVideo} />
+        {/* <BottomTab.Screen name="UPLOAD" component={Screen.UploadVideo} /> */}
         <BottomTab.Screen name="PROFILE" component={ProfileNavigator} />
       </BottomTab.Navigator>
     </>

@@ -25,6 +25,10 @@ export const fileHeader = {
   'Content-Type': 'multipart/form-data',
 };
 
+export const noContentTypeHeader = {
+  Accept: '*/*',
+};
+
 let isRefreshing = false;
 
 let refreshTokenPromise: Promise<string | void> | null = null;
@@ -67,6 +71,8 @@ const getHeader = (header: APIHeader) => {
       return urlEncodedHeader;
     case 'fileHeader':
       return fileHeader;
+    case 'NoContentType':
+      return noContentTypeHeader;
     default:
       return commonHeader;
   }

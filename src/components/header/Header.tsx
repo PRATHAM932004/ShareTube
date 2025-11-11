@@ -20,6 +20,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 interface HeaderProps {
   visible?: boolean;
   cStyle?: StyleProp<ViewStyle>;
+  subContainerStyle?: StyleProp<ViewStyle>;
   titleViewStyle?: StyleProp<ViewStyle>;
   title?: string;
   txtTitle?: StyleProp<TextStyle>;
@@ -39,6 +40,7 @@ const Header = ({
   isLogo = false,
   subTitle,
   actuionMenus,
+  subContainerStyle,
   ...rest
 }: HeaderProps) => {
   const navigate = useNavigation();
@@ -70,7 +72,13 @@ const Header = ({
 
   return visible ? (
     <View style={styles.container}>
-      <View style={[styles.subContainer, { paddingTop: insets.top }]}>
+      <View
+        style={[
+          styles.subContainer,
+          { paddingTop: insets.top },
+          subContainerStyle,
+        ]}
+      >
         <View
           style={[
             styles.headerContainer,

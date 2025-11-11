@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { BottomMainProps, RootStackParamList } from 'src/route/navTypes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { moderateScale } from '@utils';
 
 const Home = ({ navigation }: BottomMainProps<'HOME'>) => {
   const { isLoading, allVideos, totalRecord, totalPages } = useSelector(
@@ -37,7 +38,7 @@ const Home = ({ navigation }: BottomMainProps<'HOME'>) => {
 
   return (
     <>
-      <Header isLogo />
+      <Header isLogo subContainerStyle={{ height: moderateScale(120) }} />
       <FlatList
         data={allVideos}
         renderItem={({ item, index }) => (

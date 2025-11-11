@@ -1,3 +1,4 @@
+import { uploadVideo } from '@redux/action/videoAction';
 import {
   GetAllVideosApiParam,
   GetVideoByIdApiParam,
@@ -45,4 +46,6 @@ export const WebServices = {
     `/api/v1/subscriptions/c/${channelId}`,
 
   getAllLikedVideo: '/api/v1/likes/videos',
+
+  uploadVideo: '/api/v1/video',
 };

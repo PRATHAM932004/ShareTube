@@ -18,4 +18,5 @@ export type APIHeader =
   | 'Urlencoded'
   | 'fileHeader'
   | 'Login'
-  | 'Token';
+  | 'Token'
+  | 'NoContentType';

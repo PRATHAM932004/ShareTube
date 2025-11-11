@@ -5,7 +5,7 @@ import {
   GetAllVideosApiResponse,
   GetViewWatchHistoryApiResponse,
 } from '@type/apiResponseType';
-import { VideoWithOwnerWithCurrentUserData } from '@type/dbModelType';
+import { Video, VideoWithOwnerWithCurrentUserData } from '@type/dbModelType';
 import { ApiUtils, STATUS, WebServices } from '@utils';
 
 export const getAllVideosAction = createAsyncThunk<
@@ -94,6 +94,33 @@ export const viewWatchHistory = createAsyncThunk<
       route: WebServices.viewWatchHistory,
       isSecure: false,
       method: 'GET',
+    });
+    const { status, data } = response;
+    if (status === STATUS.SUCCESS) {
+      return data;
+    } else {
+      console.log('API_BAD_STATUS', JSON.stringify(response));
+      return response;
+    }
+  } catch (error) {
+    console.log('API_BAD_REQUEST', JSON.stringify(error));
+    return thunkApi.rejectWithValue(error);
+  }
+});
+
+export const uploadVideo = createAsyncThunk<
+  ApiResponseFront<Video>,
+  { body: FormData; navigation: any },
+  {}
+>('uploadVideo', async ({ body, navigation }, thunkApi) => {
+  try {
+    const response = await ApiUtils({
+      navigation,
+      route: WebServices.uploadVideo,
+      isSecure: false,
+      method: 'POST',
+      body,
+      header: 'NoContentType',
     });
     const { status, data } = response;
     if (status === STATUS.SUCCESS) {
