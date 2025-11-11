@@ -1,9 +1,8 @@
 import { Header, STIcon, STLoader } from '@components';
 import { Color } from '@theme';
-import { logout, moderateScale, numberToTime } from '@utils';
+import { logout, moderateScale, numberToTime, searchAction } from '@utils';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import {
-  BottomMainProps,
   ProfileStackProps,
   RootProfileParamList,
   RootStackParamList,
@@ -61,6 +60,14 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
 
   return (
     <>
+      <Header
+        actuionMenus={[searchAction]}
+        onMenuPress={async (item) => {
+          if (item.id === 'Search') {
+            nav.navigate('ALLVIDEO');
+          }
+        }}
+      />
       <View
         style={{
           flex: 1,
@@ -68,7 +75,13 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
           paddingTop: insets.top,
         }}
       >
-        <View style={{ flexDirection: 'row', padding: moderateScale(16) }}>
+        <TouchableOpacity
+          style={{ flexDirection: 'row', padding: moderateScale(16) }}
+          onPress={() => {
+            navigation.navigate('VIEWCHENNAL');
+          }}
+          activeOpacity={0.7}
+        >
           <Image
             source={{ uri: user?.avatar }}
             height={80}
@@ -100,7 +113,7 @@ const Profile = ({ navigation }: ProfileStackProps<'PROFILEMAIN'>) => {
               </Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
         <View style={{ padding: moderateScale(16) }}>
           <View
             style={{

@@ -1,6 +1,7 @@
 import { uploadVideo } from '@redux/action/videoAction';
 import {
   GetAllVideosApiParam,
+  GetUserProfileDetailsApiParam,
   GetVideoByIdApiParam,
   LikeToggleApiParam,
   SubscriptionToggleApiParam,
@@ -48,4 +49,7 @@ export const WebServices = {
   getAllLikedVideo: '/api/v1/likes/videos',
 
   uploadVideo: '/api/v1/video',
+
+  getUserProfile: ({ userName }: GetUserProfileDetailsApiParam) =>
+    `/api/v1/users/c/${userName}`,
 };

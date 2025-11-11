@@ -24,6 +24,7 @@ export type RootProfileParamList = {
   PROFILEMAIN: undefined;
   LIKEDVIDEO: undefined;
   VIEWHISTORY: undefined;
+  VIEWCHENNAL: undefined;
 };
 
 export type StackProps<T extends keyof RootStackParamList> =

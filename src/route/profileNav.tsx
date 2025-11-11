@@ -11,6 +11,7 @@ const ProfileNavigator = () => {
       <ProfileStack.Screen name="PROFILEMAIN" component={Screen.Profile} />
       <ProfileStack.Screen name="LIKEDVIDEO" component={Screen.LikedVideo} />
       <ProfileStack.Screen name="VIEWHISTORY" component={Screen.ViewHistory} />
+      <ProfileStack.Screen name="VIEWCHENNAL" component={Screen.ViewChennal} />
     </ProfileStack.Navigator>
   );
 };

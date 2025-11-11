@@ -36,3 +36,16 @@ export type GetViewWatchHistoryApiResponse = {
   createdAt: Date;
   updatedAt: Date;
 };
+export type GetUserProfileDetailsApiResponse = {
+  _id: string;
+  userName: string;
+  email: string;
+  fullName: string;
+  avatar: string;
+  coverImage: string;
+  uploadedVideos: Video[];
+  subscribersCount: number;
+  totalLikes: number;
+  channelsSubscribedToCount: number;
+  isSubscribed: true;
+};

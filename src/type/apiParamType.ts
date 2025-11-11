@@ -20,3 +20,7 @@ export type LikeToggleApiParam =
 export type SubscriptionToggleApiParam = {
   channelId: string;
 };
+
+export type GetUserProfileDetailsApiParam = {
+  userName: string;
+};

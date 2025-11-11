@@ -7,6 +7,7 @@ import LikedVideo from './likeVideos';
 import ViewHistory from './viewHistory';
 import UploadVideo from './uploadVideo';
 import AllVideo from './allVideo';
+import ViewChennal from './viewChennal';
 
 export default {
   Splash,
@@ -18,4 +19,5 @@ export default {
   ViewHistory,
   UploadVideo,
   AllVideo,
+  ViewChennal,
 };
